@@ -87,7 +87,7 @@ namespace Luna.Rendering {
         #endregion Basic Forms
         
         #region Drawing Surfaces
-        void DrawSurface(LSurface _surface, PointF _pos);
+        //void DrawSurface(LSurface _surface, PointF _pos);
         void DrawSurfaceExt();
 
         #endregion
