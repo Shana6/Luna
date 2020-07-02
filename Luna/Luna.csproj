@@ -69,7 +69,8 @@
     <Compile Include="Data\ChunkHandler.cs" />
     <Compile Include="Assets\LRoom.cs" />
     <Compile Include="Data\Chunk.cs" />
-    <Compile Include="Rendering\IRenderingEngine.cs" />
+    <Compile Include="Rendering\IRenderEngine.cs" />
+    <Compile Include="Rendering\LSurface.cs" />
     <Compile Include="Runner\Decompiler.cs" />
     <Compile Include="Runner\Domain.cs" />
     <Compile Include="Runner\Function.cs" />
