@@ -117,7 +117,7 @@ namespace Luna.Runner {
         [FunctionDefinition("draw_circle")]
         public static LValue draw_circle(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
             GL.Begin(PrimitiveType.TriangleFan);
-            GL.Color4((OpenTK.Graphics.Color4)_assets.CurrentColor);
+            GL.Color4((OpenTK.Graphics.Color4)_assets.CurrentColour);
 
             double _x = _arguments[0].Number;
             double _y = _arguments[1].Number;
@@ -138,30 +138,30 @@ namespace Luna.Runner {
             byte _r = (byte) (_col & 0xFF);
             byte _g = (byte) ((_col >> 8) & 0xFF);
             byte _b = (byte) ((_col >> 16) & 0xFF);
-            _assets.CurrentColor = new LColour(_r,_g,_b,0xFF);//this is a cast btw
+            _assets.CurrentColour = new LColour(_r,_g,_b,0xFF);//this is a cast btw
             return LValue.Real(0);
         }
         
         [FunctionDefinition("draw_set_alpha")]
         public static LValue draw_set_alpha(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
-            _assets.CurrentColor.Alpha = (byte) Math.Floor(_arguments[0].Number*255);
+            _assets.CurrentColour.Alpha = (byte) Math.Floor(_arguments[0].Number*255);
             return LValue.Real(0);
         }
 
         [FunctionDefinition("draw_get_colour")]
         public static LValue draw_get_colour(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
             int col = 0;
-            col += _assets.CurrentColor.Red;
+            col += _assets.CurrentColour.Red;
             col = col << 8;
-            col += _assets.CurrentColor.Green;
+            col += _assets.CurrentColour.Green;
             col = col << 8;
-            col += _assets.CurrentColor.Blue;
+            col += _assets.CurrentColour.Blue;
             return LValue.Real(col);
         }
         
         [FunctionDefinition("draw_get_alpha")]
         public static LValue draw_get_alpha(Game _assets, Domain _environment, LValue[] _arguments, Int32 _count, Stack<LValue> _stack) {
-            return LValue.Real(_assets.CurrentColor.Alpha/255f);
+            return LValue.Real(_assets.CurrentColour.Alpha/255f);
         }
 
         [FunctionDefinition("draw_sprite")]
@@ -174,7 +174,7 @@ namespace Luna.Runner {
             GL.Enable (EnableCap.Texture2D);
             GL.BindTexture (TextureTarget.Texture2D, _texid);
             GL.Begin(PrimitiveType.TriangleStrip);
-            GL.Color4((OpenTK.Graphics.Color4)_assets.CurrentColor);
+            GL.Color4((OpenTK.Graphics.Color4)_assets.CurrentColour);
 
             //the best way to do this right now is to just draw the triangles in a strip
             GL.TexCoord2(0.0,0.0);
